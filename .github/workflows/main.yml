@@ -24,5 +24,5 @@ jobs:
         with: 
           source_repo: "git@github.com:okyyds/yydspure.git" # 上游仓库地址
           source_branch: "master" 
-          destination_branch: "master" # 按照自己仓库分支名称修改
+          destination_branch: "main" # 按照自己仓库分支名称修改
           github_token: ${{ secrets.PAT }} 
