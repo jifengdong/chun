@@ -1,0 +1,28 @@
+name: sync-ChampionChann # 名称随意
+on: 
+  schedule: 
+  - cron: '10 */2 * * *'
+  workflow_dispatch: 
+  watch: 
+   types: started 
+  repository_dispatch:
+    types: sync-ChampionChann
+jobs: 
+ repo-sync: 
+     env: 
+       PAT: ${{ secrets.PAT }} 
+     runs-on: ubuntu-latest 
+     if: github.event.repository.owner.id == github.event.sender.id 
+     steps: 
+      - uses: actions/checkout@v2 
+        with: 
+          persist-credentials: false 
+    
+      - name: sync ChampionChann/ChampionChann
+        uses: repo-sync/github-sync@v2 
+        if: env.PAT 
+        with: 
+          source_repo: "git@github.com:okyyds/yydspure.git" # 上游仓库地址
+          source_branch: "master" 
+          destination_branch: "master" # 按照自己仓库分支名称修改
+          github_token: ${{ secrets.PAT }} 
