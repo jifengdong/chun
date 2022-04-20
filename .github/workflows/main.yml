@@ -23,6 +23,6 @@ jobs:
         if: env.PAT 
         with: 
           source_repo: "https://github.com/okyyds/yydspure.git" # 上游仓库地址
-          source_branch: "master" 
+          source_branch: "master" # 按照上游仓库分支名称修改
           destination_branch: "master" # 按照自己仓库分支名称修改
           github_token: ${{ secrets.PAT }} 
